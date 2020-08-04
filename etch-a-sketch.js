@@ -1,5 +1,5 @@
 console.log('connected!');
-// select the elements on the page- canvas, ctx, shake button
+// select the elements on the page- canvas, context, shake button
 const canvas = document.querySelector('#etch-a-sketch');
 const ctx = canvas.getContext('2d');
 const shakeButton = document.querySelector('.shake');
@@ -20,14 +20,8 @@ let y = Math.floor(Math.random() * height);
 ctx.lineJoin = 'round'; // create a round corner when two lines meet
 ctx.lineCap = 'round'; // draw a line with rounded end caps
 // to define thickness of the line
-ctx.lineWidth = 15;
-// to start drawing
-ctx.beginPath();
-// to make a visible line
-ctx.moveTo(x,y);
-ctx.lineTo(x,y);
-// stroke the line
-ctx.stroke();
+ctx.lineWidth = 20;
+initialize();
 
 // listen for keys
 window.addEventListener('keydown', handleKey);
@@ -82,4 +76,15 @@ function clear(){
     console.log('Done the shake');
     canvas.classList.remove('shake');
   },{once: true});
+  setTimeout(initialize, 1500);
+}
+
+function initialize(){
+  // to start drawing
+  ctx.beginPath();
+  // to make a visible line
+  ctx.moveTo(x,y);
+  ctx.lineTo(x,y);
+  // stroke the line
+  ctx.stroke(); 
 }
